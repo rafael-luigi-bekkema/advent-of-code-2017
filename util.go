@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"constraints"
 	"fmt"
 	"io"
 	"os"
@@ -70,4 +71,24 @@ func Lines(day int, suffix ...string) []string {
 		lines = append(lines, b.Text())
 	}
 	return lines
+}
+
+func Map[T, U any](f func(v T) U, items []T) []U {
+	out := make([]U, len(items))
+	for i := range items {
+		out[i] = f(items[i])
+	}
+	return out
+}
+
+func MinMax[T constraints.Ordered](values []T) (min, max T) {
+	for i, v := range values {
+		if i == 0 || v < min {
+			min = v
+		}
+		if i == 0 || v > max {
+			max = v
+		}
+	}
+	return min, max
 }
