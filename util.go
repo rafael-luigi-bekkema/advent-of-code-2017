@@ -38,6 +38,13 @@ func Atoi(input string) int {
 	return i
 }
 
+func Abs[T constraints.Signed | constraints.Float](v T) T {
+	if v < 0 {
+		return v * -1
+	}
+	return v
+}
+
 const inputDir = "."
 
 func inputPath(day int, suffix ...string) string {
