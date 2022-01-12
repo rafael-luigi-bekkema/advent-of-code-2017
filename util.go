@@ -80,6 +80,15 @@ func Lines(day int, suffix ...string) []string {
 	return lines
 }
 
+func IntLines(day int, suffix ...string) (lines []int) {
+	b, close := InputScanner(day, suffix...)
+	defer close()
+	for b.Scan() {
+		lines = append(lines, Atoi(b.Text()))
+	}
+	return lines
+}
+
 func Map[T, U any](f func(v T) U, items []T) []U {
 	out := make([]U, len(items))
 	for i := range items {
@@ -107,4 +116,10 @@ func In[T comparable](item T, items ...T) bool {
 		}
 	}
 	return false
+}
+
+func CopySlice[T any](slice []T) []T {
+	result := make([]T, len(slice))
+	copy(result, slice)
+	return result
 }
