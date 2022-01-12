@@ -99,3 +99,12 @@ func MinMax[T constraints.Ordered](values []T) (min, max T) {
 	}
 	return min, max
 }
+
+func In[T comparable](item T, items ...T) bool {
+	for _, i := range items {
+		if i == item {
+			return true
+		}
+	}
+	return false
+}
