@@ -47,7 +47,7 @@ func shiftL(ints []int, mv int) {
 	copy(ints[len(ints)-mv:], tmp)
 }
 
-func day10b(input string) string {
+func KnotHash(input string) string {
 	n := 256
 	nums := append([]byte(input), 17, 31, 73, 47, 23)
 	ints := make([]int, n)
@@ -73,4 +73,8 @@ func day10b(input string) string {
 		dense[i] = xor(ints[i*16 : i*16+16])
 	}
 	return hexify(dense)
+}
+
+func day10b(input string) string {
+	return KnotHash(input)
 }
