@@ -57,7 +57,7 @@ func inputPath(day int, suffix ...string) string {
 
 func Input(day int, suffix ...string) string {
 	data := Must(os.ReadFile(inputPath(day, suffix...)))
-	return strings.TrimSpace(string(data))
+	return strings.TrimRight(string(data), "\n")
 }
 
 func InputReader(day int, suffix ...string) io.ReadSeekCloser {
