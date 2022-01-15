@@ -131,3 +131,14 @@ func CopySlice[T any](slice []T) []T {
 	copy(result, slice)
 	return result
 }
+
+func NewGrid[T any](size int, init T) [][]T {
+	res := make([][]T, size)
+	for i := 0; i < size; i++ {
+		res[i] = make([]T, size)
+		for j := 0; j < size; j++ {
+			res[i][j] = init
+		}
+	}
+	return res
+}
